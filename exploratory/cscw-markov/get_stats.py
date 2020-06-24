@@ -95,8 +95,8 @@ class SimpleFilter(object):
 
 class FirstFiveMinutesFilter(SimpleFilter):
     
-    def __init(self, context):
-        super().__init__(self, context)
+    def __init__(self, context):
+        super().__init__(context)
     
     def include(self, log_entry):
         start_time = self._context['start_time']
@@ -108,8 +108,8 @@ class FirstFiveMinutesFilter(SimpleFilter):
 
 class SecondFiveMinuteFilter(SimpleFilter):
     
-    def __init(self, context):
-        super().__init__(self, context)
+    def __init__(self, context):
+        super().__init__(context)
     
     def include(self, log_entry):
         start_time = self._context['start_time']
@@ -117,6 +117,35 @@ class SecondFiveMinuteFilter(SimpleFilter):
         if start_time is None or ((log_entry['date'] - start_time).seconds > 300 and (log_entry['date'] - start_time).seconds < 600):
             return True
 
+        return False
+
+class SavedDocumentCountFilter(SimpleFilter):
+    """
+    Filters out events that take place when saved_count documents have been saved by the participant.
+    """
+    def __init__(self, context, saved_count=0):
+        super().__init__(context)
+        self.__saved_count = saved_count
+    
+    def include(self, log_entry):
+        if self._context['saved_document_count'] == self.__saved_count:
+            return True
+        
+        return False
+
+
+class QueriesIssuedFilter(SimpleFilter):
+    """
+
+    """
+    def __init__(self, context, issued_count=0):
+        super().__init__(context)
+        self.__issued_count = issued_count
+    
+    def include(self, log_entry):
+        if self._context['queries_issued_count'] == self.__issued_count:
+            return True
+        
         return False
 
 
@@ -137,9 +166,11 @@ class SearchSession(object):
         self.__context = {
             'start_time': None,
             'current_state': None,
+            'saved_document_count': 0,
+            'queries_issued_count': 0,
         }
 
-        self.filter = SecondFiveMinuteFilter(self.__context)
+        self.filter = QueriesIssuedFilter(self.__context, issued_count=7)
 
         self.__mapping = {
             'QUERYSUGGESTIONS_GET': States.QUERY,
@@ -226,12 +257,23 @@ class SearchSession(object):
     def __update_start_time(self, entry):
         if self.__context['start_time'] is None:
             self.__context['start_time'] = entry['date']
+    
+    def __update_saved_document_count(self, entry):
+        if entry['event'] == 'BOOKMARK_ACTION':
+            self.__context['saved_document_count'] += 1
+    
+    def __update_issued_queries_count(self, entry):
+        if entry['event'] == 'SEARCH_QUERY':
+            self.__context['queries_issued_count'] += 1
 
     def process(self):
         """
 
         """
         for entry in self.log_entries:
+            self.__update_issued_queries_count(entry)  # Update the query count before we apply the filter.
+            self.__update_saved_document_count(entry)  # Update the saved document count before we apply the filter.
+
             if self.filter.include(entry):
                 event = entry['event']
                 date = entry['date']
