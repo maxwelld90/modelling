@@ -16,6 +16,16 @@ To represent interactions over the *SearchX* interface, we use (in this first pa
 
 ![Interface components](interface.png)
 
+### Component Sizes
+Note that the *recent queries* component is always placed above the *saved documents* component. Note also of the height of each component; these heights are fixed, and for some reason are different.
+
+Recent Queries             | Saved Documents
+:-------------------------:|:-------------------------:
+![](interface-queries.png) | ![](interface-saved.png)
+
+Does this have an impact? With the data that I have at my disposal, I cannot be sure. However, given that there is generally a higher recorded percentage of interactions on the saved documents widget, *does that happen because it is simply larger, or it is more useful?* We cannot tell for sure with the available data.
+
+
 ## Data Source
 
 
