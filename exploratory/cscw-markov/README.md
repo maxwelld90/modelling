@@ -22,10 +22,10 @@ To represent interactions over the *SearchX* interface, we use (in this first pa
 ### Interface Components (States)
 For the above model, we keep things simple, considering four main components that participants interact with. These are:
 
-* **Querying**, the state where a participant is *entering a query* into the query box.
-* **Results**, the state where a participant interacts with the *organic results, or ten blue links* that are presented to them.
-* **Recent**, the state where a participant interacts with the *recent queries component*.
-* **Saved**, the state where a participant interacts with the *saved documents component*.
+* ![#E13D47](https://via.placeholder.com/15/E13D47/000000?text=+) **Querying**, the state where a participant is *entering a query* into the query box.
+* ![#E17547](https://via.placeholder.com/15/E17547/000000?text=+) **Results**, the state where a participant interacts with the *organic results, or ten blue links* that are presented to them.
+* ![#6CA944](https://via.placeholder.com/15/6CA944/000000?text=+) **Recent**, the state where a participant interacts with the *recent queries component*.
+* ![#206BA6](https://via.placeholder.com/15/206BA6/000000?text=+) **Saved**, the state where a participant interacts with the *saved documents component*.
 
 By interact, we mean a hover event. An event where the participant moves their mouse cursor over the component; we have events that capture this. The exception is for the querying component; see *Log Events* below.
 
