@@ -83,7 +83,14 @@ Given the datasets, what were the interaction values recorded? We could consider
 #### Considering Sessions Individually
 Let's consider sessions individually. We have 24 participants, each undertaking 3 search topics, meaning a total of 72 datapoints. While creating a separate Markov model for each would be unnecessary and unweildy, let's instead combine together the complexities of each search session to a single point on a plot. Below is a combined boxplot and swarmplot, with each of the four main interface components represented along the x-axis, with the percentage of time spent interacting within each component shown up the y-axis. As said, each point represents an individual search session, so there will be 72 points per colour.
 
-![](swarmplot.png)
+Full Dataset               | First Five Minutes
+:-------------------------:|:-------------------------:
+![](swarmplot.png)         | ![](swarmplot-first5.png)
+
+Saved Documents Component  | `x=[0,2,4,6]`
+:-------------------------:|:-------------------------:
+![](swarmplot-saved0.png)  | ![](swarmplot-saved2.png)
+![](swarmplot-saved4.png)  | ![](swarmplot-saved6.png)
 
 We can see from the points that generally, a majority of interactions took place within the results, followed by the query components. This is not suprising. The recent queries and saved documents components are the least interacted-with components, with saved documents affording more interactions on average than recent queries.
 
