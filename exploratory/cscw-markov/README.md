@@ -54,7 +54,7 @@ These are our events that trigger a change in state. Note that for querying, the
 At the moment, times are not being tracked, but if it is worth looking into later on, I will do so. I felt that working out a reliable way to track times was not worth the effort at this first pass. Like any other log, there's lots of weird scenarios that a simple script that tracks a start and end event can't reliably capture!
 
 ## Basic Method
-To compute the values reported below, we took each of the 
+To compute the values reported below, we took each of the trigger events listed above (representing changes in state), and began counting the number of occurrences. We could then find the sum (over the four) and computer the percentage of interactions belonging to a specific component. For state-to-state transitions, we also counted the number of times transitions occurred from one state to another, and counted those. Percentages were also computed from these values, and slapped onto a Markov model-style illustration.
 
 ## Results
 Let's have a look at what I've found. A lot of it is to be expected, but interesting nevertheless. First, we'll have a look at the raw percentage values for interactions that take place over each component, and then move towards splitting these values up to construct a basic model showing the percentage likelihood of switching from one state to another.
