@@ -73,6 +73,10 @@ The final two are interesting -- the values of `X` and `Y` dictate how many item
 
 ### Dataset Distributions
 
+Full Dataset               | First Five Minutes           | 5-10 Minutes
+:-------------------------:|:----------------------------:|:-----------------------------:
+![](distribution-full.png) | ![](distribution-first5.png) | ![](distribution-first5.png)
+
 ### Interaction Percentages
 Given the datasets, what were the interaction values recorded? We could consider things from two perspectives: *(i)* considering each session by itself, meaning we have 72 unique entries, and show those individually, or *(ii)* sum up all of the interactions that take place over all 72 sessions, and treat them as one. We report findings from both approaches.
 
@@ -84,7 +88,34 @@ Let's consider sessions individually. We have 24 participants, each undertaking 
 We can see from the points that generally, a majority of interactions took place within the results, followed by the query components. This is not suprising. The recent queries and saved documents components are the least interacted-with components, with saved documents affording more interactions on average than recent queries.
 
 #### Summing Everything Up
-When we
+
+**Type**  | **Query** | **Results** | **RecentQ** | **Saved**
+:--------:|:---------:|:-----------:|:-----------:|:---------:
+`full`    | `0.25`    | `0.45`      | `0.13`      | `0.18`
+`first5`  | `0.37`    | `0.46`      | `0.08`      | `0.09`
+`second5` | `0.25`    | `0.45`      | `0.14`      | `0.16`
+
+**No. Saved**  | **Query** | **Results** | **RecentQ** | **Saved**
+:-------------:|:---------:|:-----------:|:-----------:|:-----------:
+0              |  0.416471 |    0.463529 |   0.112941  | 0.00705882 |
+1              |  0.219745 |    0.55414  |   0.159236  | 0.066879   |
+2              |  0.170732 |    0.558266 |   0.151762  | 0.119241   |
+3              |  0.172757 |    0.591362 |   0.129568  | 0.106312   |
+4              |  0.201729 |    0.550432 |   0.103746  | 0.144092   |
+5              |  0.172161 |    0.589744 |   0.0989011 | 0.139194   |
+6              |  0.208904 |    0.55137  |   0.0719178 | 0.167808   |
+7              |  0.173585 |    0.562264 |   0.0679245 | 0.196226   |
+
+**No. Queries**  | **Query** | **Results** | **RecentQ** | **Saved**
+:-------------:|:-----------:|:-----------:|:-----------:|:-----------:
+0              |    0.717742 |    0.209677 |   0.0241935 | 0.0483871  |
+1              |    0.365796 |    0.432304 |   0.0807601 | 0.12114    |
+2              |    0.278422 |    0.426914 |   0.12529   | 0.169374   |
+3              |    0.272331 |    0.422658 |   0.115468  | 0.189542   |
+4              |    0.329341 |    0.422156 |   0.10479   | 0.143713   |
+5              |    0.296089 |    0.405028 |   0.106145  | 0.192737   |
+6              |    0.296667 |    0.41     |   0.146667  | 0.146667   |
+7              |    0.334928 |    0.430622 |   0.129187  | 0.105263   |
 
 ### As Content Increases, What Happens?
 Another question posed is: *as the content inside the saved documents and recent queries components increases, what happens to the interactions?* To consider this question, we look at the changes in the total percentage of interactions that take place in the four main components as the number of items in the saved documents and recent queries components increases. Note that this first pass controls only the number of items in the two components in isolation; i.e. if we explicitly look at interactions when 4 items are in the saved documents list (`x=4`), there could be a variable number of queries in the recently issued queries comswponent. **Note that the colours don't match up (sorry), it was a pain to get it to change colour in sns.**
