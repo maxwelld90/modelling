@@ -90,9 +90,11 @@ So from this plot, we want to look at the orange line first -- which represents 
 
 ![As the number of recent queries increases (x axis), what happens?](recent-queries-increase.png)
 
-When we look at the second plot, we're looking at what happens when the number of queries increases over time (so more items appear in the recent queries component). One thing that looks a bit weird is why the red line (results) starts at 20%. How can you look at results when there are none (at zero queries)? I think this is an artefact of the search interface; perhaps there's a `<div>` that stores results that is still present at the beginning -- see the screenshot below. The logger is tracking hovers into that red box. So there's still events being captured. I will need to update the script to remove these events.
+When we look at the second plot, we're looking at what happens when the number of queries increases over time (so more items appear in the recent queries component). One thing that looks a bit weird is why the red line (results) starts at 20%. How can you look at results when there are none (at zero queries)? I think this is an artefact of the search interface; perhaps there's a `<div>` that stores results that is still present at the beginning -- see the screenshot below. The logger is tracking hovers into that red box. So there's still events being captured. I will need to update the script to remove these events. However, looking at the blue line (interactions with recent queries), we again see a gradual increase in interactions that take place. Interestingly, we see a lower percentage for the orange line (saved documents), meaning fewer interactions take place within the previously saved documents component than we witnessed above.
 
 ![Big bad red box that swallows up hover events.](interface-results-container.png)
+
+**tl;dr** We see increases in the interactions within both the saved documents and recent queries components as the number of items within them increases. Both seem to follow a similar trend, although the saved documents component affords a slightly higher rate of increase (at least from a crude visual inspection). We need to do a bit more analysis, controlling what's in BOTH components, to see if one is more *dominant* or *important* than the other, or at least, one that does afford more interactions/attraction.
 
 
 ### Towards Markov-Style Representations
@@ -104,3 +106,6 @@ When we look at the second plot, we're looking at what happens when the number o
     - or is it simply due to the fact that in the scenario, it is simply more useful?
     - we should take a look at the data of a collaborative session, and consider interactions on the two widgets there. is there a difference?
         - because recent queries are arguably more important for saved documents, perhaps without defined roles?
+
+- so with recently saved documents and queries controlled, maybe we can get an idea of what one is more dominant.
+    - we need to control both to be able to draw meaningful conclusions!
