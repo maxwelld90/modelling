@@ -1,7 +1,10 @@
 # CSCW Markov Models (Exploratory Analysis)
 Exploratory scripts for examining how people use the *SearchX* interface using experimental data from the CSCW experiment.
 
-**Last Update: 2020-06-11**
+**Last Update: 2020-06-25**
+
+## Required Software
+See [the `requirements.txt` file](https://github.com/maxwelld90/modelling/blob/master/exploratory/cscw-markov/requirements.txt) for the required Python packages. Run this on Python 3.7.x. You also need a MongoDB instance running locally with the interaction logs stored on it.
 
 ## Overview
 Points to consider:
@@ -12,9 +15,13 @@ Points to consider:
 * Look at the first five minutes, then the last five minutes?
 
 ## Exprimental Interface
-To represent interactions over the *SearchX* interface, we use (in this first pass) Markov models, with each state representing a different interface component (i.e. the searcher is currently interacting with a given component in some way), with transition probabilities the liklihood of transitioning from interface component *x* to interface component *y*.
+To represent interactions over the *SearchX* interface, we use (in this first pass) Markov models, with each state representing a different interface component (i.e. the searcher is currently interacting with a given component in some way), with transition probabilities the liklihood of transitioning from interface component *x* to interface component *y*. We keep it simple, considering four main areas in which a participant can interact.
 
 ![Interface components](interface.png)
+
+The four components are:
+
+* Querying, the state where a participant is entering a query 
 
 ### Component Sizes
 Note that the *recent queries* component is always placed above the *saved documents* component. Note also of the height of each component; these heights are fixed, and for some reason are different.
@@ -28,5 +35,7 @@ Does this have an impact? With the data that I have at my disposal, I cannot be 
 
 ## Data Source
 
+## Log Events
+What events do we use to count the number of interactions? What actually counts as an interaction?
 
-## Required Packages
+
