@@ -101,12 +101,19 @@ Now, let's break things down a bit more. As the log analysis script parses the l
 
 ![Markov model, over the full dataset.](markov-full.png)
 
-![Markov model, over the full dataset.](markov-first5.png)
+Similar findings were observed for state transitions over the first x minutes (in terms of transitions between different interface components).
 
-Saved Documents            | `x=[0,2,4,6]`
+Saved Documents Component  | `x=[0,2,4,6]`
 :-------------------------:|:-------------------------:
 ![](markov-saved0.png)     | ![](markov-saved2.png)
 ![](markov-saved4.png)     | ![](markov-saved6.png)
+
+- similar levels of transitions from coomponents to saved documents. zero at the start, after that, gradual increases. For example, from Q to Saved, went from 0, 3.23, 5.71, 8.20. General increase. corresponds with results found above.
+
+Queries Component          | `y=[0,2,4,6]`
+:-------------------------:|:-------------------------:
+![](markov-queries0.png)     | ![](markov-queries2.png)
+![](markov-queries4.png)     | ![](markov-queries6.png)
 
 ## Thoughts
 - so the saved documents widget is double the height of the recent queries widget.
