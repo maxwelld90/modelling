@@ -92,6 +92,11 @@ Saved Documents Component  | `x=[0,2,4,6]`
 ![](swarmplot-saved0.png)  | ![](swarmplot-saved2.png)
 ![](swarmplot-saved4.png)  | ![](swarmplot-saved6.png)
 
+Recent Queries Component     | `y=[0,2,4,6]`
+:---------------------------:|:-------------------------:
+![](swarmplot-queries0.png)  | ![](swarmplot-queries2.png)
+![](swarmplot-queries4.png)  | ![](swarmplot-queries6.png)
+
 We can see from the points that generally, a majority of interactions took place within the results, followed by the query components. This is not suprising. The recent queries and saved documents components are the least interacted-with components, with saved documents affording more interactions on average than recent queries.
 
 #### Summing Everything Up
