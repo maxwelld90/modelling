@@ -77,14 +77,17 @@ The final two are interesting -- the values of `X` and `Y` dictate how many item
 Given the datasets, what were the interaction values recorded? We could consider things from two perspectives: *(i)* considering each session by itself, meaning we have 72 unique entries, and show those individually, or *(ii)* sum up all of the interactions that take place over all 72 sessions, and treat them as one. We report findings from both approaches.
 
 #### Considering Sessions Individually
+Let's consider sessions individually. We have 24 participants, each undertaking 3 search topics, meaning a total of 72 datapoints. While creating a separate Markov model for each would be unnecessary and unweildy, let's instead combine together the complexities of each search session to a single point on a plot. Below is a combined boxplot and swarmplot, with each of the four main interface components represented along the x-axis, with the percentage of time spent interacting within each component shown up the y-axis. As said, each point represents an individual search session, so there will be 72 points per colour.
 
-![](boxplot.png)
+![](swarmplot.png)
+
+We can see from the points that generally, a majority of interactions took place within the results, followed by the query components. This is not suprising. The recent queries and saved documents components are the least interacted-with components, with saved documents affording more interactions on average than recent queries.
 
 #### Summing Everything Up
 When we
 
 ### As Content Increases, What Happens?
-Another question posed is: *as the content inside the saved documents and recent queries components increases, what happens to the interactions?* To consider this question, we look at the changes in the total percentage of interactions that take place in the four main components as the number of items in the saved documents and recent queries components increases. Note that this first pass controls only the number of items in the two components in isolation; i.e. if we explicitly look at interactions when 4 items are in the saved documents list (`x=4`), there could be a variable number of queries in the recently issued queries component. **Note that the colours don't match up (sorry), it was a pain to get it to change colour in sns.**
+Another question posed is: *as the content inside the saved documents and recent queries components increases, what happens to the interactions?* To consider this question, we look at the changes in the total percentage of interactions that take place in the four main components as the number of items in the saved documents and recent queries components increases. Note that this first pass controls only the number of items in the two components in isolation; i.e. if we explicitly look at interactions when 4 items are in the saved documents list (`x=4`), there could be a variable number of queries in the recently issued queries comswponent. **Note that the colours don't match up (sorry), it was a pain to get it to change colour in sns.**
 
 ![As the number of saved documents increases (x axis), what happens?](saved-documents-increase.png)
 
