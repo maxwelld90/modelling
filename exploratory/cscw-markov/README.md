@@ -56,6 +56,18 @@ At the moment, times are not being tracked, but if it is worth looking into late
 ## Results
 Let's have a look at what I've found. A lot of it is to be expected, but interesting nevertheless. First, we'll have a look at the raw percentage values for interactions that take place over each component, and then move towards splitting these values up to construct a basic model showing the percentage likelihood of switching from one state to another.
 
+We chop the dataset up based on a number of different considerations to see what is going on. Each approach is shown in the table below.
+
+**Type**  | **Description**
+:--------:|:-------------------------:
+`full`    | The entire search session.
+`first5`  | The first five minutes of the search session.
+`second5` | From 5-10 minutes into the search session.
+`savedX`  | Considering only events that take place when `X` documents have been saved.
+`queryY`  | Considering only events that take place when `Y` queries have been issued.
+
+The final two are interesting -- the values of `X` and `Y` dictate how many items are present in the saved documents and recent queries components, respectively. By examining the dataset this way, we can see how interactions vary as the number of items in each of the two components increase.
+
 ### Dataset Distributions
 
 ### Interaction Percentages
@@ -64,3 +76,11 @@ Total number of interactions, what percentage was spent on x?
 ### As Content Increases, What Happens?
 
 ### Towards Visual Representations
+
+## Thoughts
+- so the saved documents widget is double the height of the recent queries widget.
+    - we observed a higher percentage of interactions with the saved documents widget.
+    - if we increase the size of a widget, does that mean we are priming participants/users into thinking that "hey, this one is more important"?
+    - or is it simply due to the fact that in the scenario, it is simply more useful?
+    - we should take a look at the data of a collaborative session, and consider interactions on the two widgets there. is there a difference?
+        - because recent queries are arguably more important for saved documents, perhaps without defined roles?
