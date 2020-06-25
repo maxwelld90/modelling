@@ -19,11 +19,17 @@ To represent interactions over the *SearchX* interface, we use (in this first pa
 
 ![Interface components](interface.png)
 
-The four components are:
+### Interface Components (States)
+For the above model, we keep things simple, considering four main components that participants interact with. These are:
 
-* Querying, the state where a participant is entering a query 
+* **Querying**, the state where a participant is *entering a query* into the query box.
+* **Results**, the state where a participant interacts with the *organic results, or ten blue links* that are presented to them.
+* **Recent**, the state where a participant interacts with the *recent queries component*.
+* **Saved**, the state where a participant interacts with the *saved documents component*.
 
-### Component Sizes
+By interact, we mean a hover event. An event where the participant moves their mouse cursor over the component; we have events that capture this. The exception is for the querying component; see *Log Events* below.
+
+### Components of Interest
 Note that the *recent queries* component is always placed above the *saved documents* component. Note also of the height of each component; these heights are fixed, and for some reason are different.
 
 Recent Queries             | Saved Documents
@@ -31,6 +37,9 @@ Recent Queries             | Saved Documents
 ![](interface-queries.png) | ![](interface-saved.png)
 
 Does this have an impact? With the data that I have at my disposal, I cannot be sure. However, given that there is generally a higher recorded percentage of interactions on the saved documents widget, *does that happen because it is simply larger, or it is more useful?* We cannot tell for sure with the available data. We also cannot accurately state how many documents/queries fit in each box (without the need for the scrollbars to become active). If a document with a long title is saved, or a long query is issued, the title/query spills onto a new line, pushing items following it down, thus reducing the number of visible items. If we are to analyse the interactions with these widgets more carefully, I think we need to be better at how we control they are presented to participants.
+
+### Log Events
+What l
 
 
 ## Data Source
