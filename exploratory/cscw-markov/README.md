@@ -82,7 +82,7 @@ Given the datasets, what were the interaction values recorded? We could consider
 When we
 
 ### As Content Increases, What Happens?
-Another question posed is: *as the content inside the saved documents and recent queries components increases, what happens to the interactions?* To consider this question, we look at the changes in the total percentage of interactions that take place in the four main components as the number of items in the saved documents and recent queries components increases. Note that this first pass controls only the number of items in the two components in isolation; i.e. if we explicitly look at interactions when 4 items are in the saved documents list (`x=4`), there could be a variable number of queries in the recently issued queries component.
+Another question posed is: *as the content inside the saved documents and recent queries components increases, what happens to the interactions?* To consider this question, we look at the changes in the total percentage of interactions that take place in the four main components as the number of items in the saved documents and recent queries components increases. Note that this first pass controls only the number of items in the two components in isolation; i.e. if we explicitly look at interactions when 4 items are in the saved documents list (`x=4`), there could be a variable number of queries in the recently issued queries component. **Note that the colours don't match up (sorry), it was a pain to get it to change colour in sns.**
 
 ![As the number of saved documents increases (x axis), what happens?](saved-documents-increase.png)
 
@@ -98,6 +98,8 @@ When we look at the second plot, we're looking at what happens when the number o
 
 ### Towards Markov-Style Representations
 Now, let's break things down a bit more. As the log analysis script parses the log events in chronological order, we can work out what the state is at any current point -- and when an event is reached that triggers a state change (see [Log Events](#log-events) above), we can then work out how many occurrences of state changes from one to another happen in a given dataset. We visualise that here with some basic model representations over the four states.
+
+![Markov model, over the full dataset.](markov-full.png)
 
 ## Thoughts
 - so the saved documents widget is double the height of the recent queries widget.
