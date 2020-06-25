@@ -51,9 +51,4 @@ Saved      | `BOOKMARK_HOVERENTER`
 
 These are our events that trigger a change in state. Note that for querying, there is *no hover event for the query box widget*. We have to approximate here; instead, we look for when a query suggestion is requested by the client. This means that the participant is interacting with the query box. For the first instance of a `QUERYSUGGESTIONS_GET` event (they typically occur in blocks, character-by-character), we switch state to querying.
 
-## Data Source
-
-## Log Events
-What events do we use to count the number of interactions? What actually counts as an interaction?
-
-
+At the moment, times are not being tracked, but if it is worth looking into later on, I will do so. I felt that working out a reliable way to track times was not worth the effort at this first pass. Like any other log, there's lots of weird scenarios that a simple script that tracks a start and end event can't reliably capture!
