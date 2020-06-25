@@ -7,12 +7,13 @@ Exploratory scripts for examining how people use the *SearchX* interface using e
 See [the `requirements.txt` file](https://github.com/maxwelld90/modelling/blob/master/exploratory/cscw-markov/requirements.txt) for the required Python packages. Run this on Python 3.7.x. You also need a MongoDB instance running locally with the interaction logs stored on it.
 
 ## Overview
-Points to consider:
+We want to see roughly how behaviours change when interacting with different components on the *SearchX* interface. To start, we limit our exploration using data from an interaction log derived from the independent condition of the CSCW experiment, i.e. participants working solo on a search task. When we look at the data in different ways, what changes in behaviour do we observe? In paricular, we are interested in the number of interactions that take place with the four main components.
 
-* We want to see what happens to interactions with the search interface and its widgets.
+Questions we want to consider (I think):
+* What are the interaction likelihoods for the main interface components?
 * How do interactions with different widgets correspond to interactions with the rest of the search interface?
 * If there is more content in a widget, does that entail a greater degree of interaction?
-* Look at the first five minutes, then the last five minutes?
+* Do the levels of interaction vary at different points in time during search sessions?
 
 ## Exprimental Interface
 To represent interactions over the *SearchX* interface, we use (in this first pass) Markov models, with each state representing a different interface component (i.e. the searcher is currently interacting with a given component in some way), with transition probabilities the liklihood of transitioning from interface component *x* to interface component *y*. We keep it simple, considering four main areas in which a participant can interact.
@@ -39,7 +40,7 @@ Recent Queries             | Saved Documents
 Does this have an impact? With the data that I have at my disposal, I cannot be sure. However, given that there is generally a higher recorded percentage of interactions on the saved documents widget, *does that happen because it is simply larger, or it is more useful?* We cannot tell for sure with the available data. We also cannot accurately state how many documents/queries fit in each box (without the need for the scrollbars to become active). If a document with a long title is saved, or a long query is issued, the title/query spills onto a new line, pushing items following it down, thus reducing the number of visible items. If we are to analyse the interactions with these widgets more carefully, I think we need to be better at how we control they are presented to participants.
 
 ### Log Events
-What l
+How do we approximate what people are doing at a given time from the log we have?
 
 
 ## Data Source
