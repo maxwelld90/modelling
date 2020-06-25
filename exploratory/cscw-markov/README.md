@@ -53,6 +53,9 @@ These are our events that trigger a change in state. Note that for querying, the
 
 At the moment, times are not being tracked, but if it is worth looking into later on, I will do so. I felt that working out a reliable way to track times was not worth the effort at this first pass. Like any other log, there's lots of weird scenarios that a simple script that tracks a start and end event can't reliably capture!
 
+## Basic Method
+To compute the values reported below, we took each of the 
+
 ## Results
 Let's have a look at what I've found. A lot of it is to be expected, but interesting nevertheless. First, we'll have a look at the raw percentage values for interactions that take place over each component, and then move towards splitting these values up to construct a basic model showing the percentage likelihood of switching from one state to another.
 
@@ -71,9 +74,19 @@ The final two are interesting -- the values of `X` and `Y` dictate how many item
 ### Dataset Distributions
 
 ### Interaction Percentages
-Total number of interactions, what percentage was spent on x?
+Given the datasets, what were the interaction values recorded? We could consider things from two perspectives: *(i)* considering each session by itself, meaning we have 72 unique entries, and show those individually, or *(ii)* sum up all of the interactions that take place over all 72 sessions, and treat them as one. We report findings from both approaches.
+
+#### Considering Sessions Individually
+
+#### Summing Everything Up
+When we
 
 ### As Content Increases, What Happens?
+Another question posed is: *as the content inside the saved documents and recent queries components increases, what happens to the interactions?* To consider this question, we look at the changes in the total percentage of interactions that take place in the four main components as the number of items in the saved documents and recent queries components increases. Note that this first pass controls only the number of items in the two components in isolation; i.e. if we explicitly look at interactions when 4 items are in the saved documents list (`x=4`), there could be a variable number of queries in the recently issued queries component.
+
+![As the number of saved documents increases (x axis), what happens?](saved-documents-increase.png)
+
+![As the number of recent queries increases (x axis), what happens?](recent-queries-increase.png)
 
 ### Towards Visual Representations
 
