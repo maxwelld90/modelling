@@ -75,7 +75,7 @@ The final two are interesting -- the values of `X` and `Y` dictate how many item
 
 Full Dataset               | First Five Minutes           | 5-10 Minutes
 :-------------------------:|:----------------------------:|:-----------------------------:
-![](distribution-full.png) | ![](distribution-first5.png) | ![](distribution-first5.png)
+![](images/distribution-full.png) | ![](images/distribution-first5.png) | ![](images/distribution-first5.png)
 
 ### Interaction Percentages
 Given the datasets, what were the interaction values recorded? We could consider things from two perspectives: *(i)* considering each session by itself, meaning we have 72 unique entries, and show those individually, or *(ii)* sum up all of the interactions that take place over all 72 sessions, and treat them as one. We report findings from both approaches.
