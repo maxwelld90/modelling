@@ -86,6 +86,8 @@ Another question posed is: *as the content inside the saved documents and recent
 
 ![As the number of saved documents increases (x axis), what happens?](saved-documents-increase.png)
 
+So from this plot, we want to look at the orange line first -- which represents the percentage of interactions taking place in the saved documents component, as the number of items in it increases (x axis). This ranges from 0% (at zero documents) to roughly 20% (at seven documents). We generally see an increase as the number of items itself increases. The blue line (recent queries) slowly decreases as the number of saved documents increases. There may be a relationship between the two components -- but I think we need to look at controlling the number of items in both components to draw any meaningful conclusions.
+
 ![As the number of recent queries increases (x axis), what happens?](recent-queries-increase.png)
 
 ### Towards Visual Representations
