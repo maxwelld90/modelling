@@ -96,8 +96,8 @@ When we look at the second plot, we're looking at what happens when the number o
 
 **tl;dr** We see increases in the interactions within both the saved documents and recent queries components as the number of items within them increases. Both seem to follow a similar trend, although the saved documents component affords a slightly higher rate of increase (at least from a crude visual inspection). We need to do a bit more analysis, controlling what's in BOTH components, to see if one is more *dominant* or *important* than the other, or at least, one that does afford more interactions/attraction.
 
-
 ### Towards Markov-Style Representations
+Now, let's break things down a bit more. As the log analysis script parses the log events in chronological order, we can work out what the state is at any current point -- and when an event is reached that triggers a state change (see [Log Events](#log-events) above), we can then work out how many occurrences of state changes from one to another happen in a given dataset. We visualise that here with some basic model representations over the four states.
 
 ## Thoughts
 - so the saved documents widget is double the height of the recent queries widget.
