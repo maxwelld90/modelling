@@ -90,7 +90,12 @@ So from this plot, we want to look at the orange line first -- which represents 
 
 ![As the number of recent queries increases (x axis), what happens?](recent-queries-increase.png)
 
-### Towards Visual Representations
+When we look at the second plot, we're looking at what happens when the number of queries increases over time (so more items appear in the recent queries component). One thing that looks a bit weird is why the red line (results) starts at 20%. How can you look at results when there are none (at zero queries)? I think this is an artefact of the search interface; perhaps there's a `<div>` that stores results that is still present at the beginning -- see the screenshot below. The logger is tracking hovers into that red box. So there's still events being captured. I will need to update the script to remove these events.
+
+![Big bad red box that swallows up hover events.](interface-results-container.png)
+
+
+### Towards Markov-Style Representations
 
 ## Thoughts
 - so the saved documents widget is double the height of the recent queries widget.
