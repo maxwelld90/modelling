@@ -78,6 +78,8 @@ Given the datasets, what were the interaction values recorded? We could consider
 
 #### Considering Sessions Individually
 
+![](boxplot.png)
+
 #### Summing Everything Up
 When we
 
@@ -110,7 +112,7 @@ Saved Documents Component  | `x=[0,2,4,6]`
 
 - similar levels of transitions from coomponents to saved documents. zero at the start, after that, gradual increases. For example, from Q to Saved, went from 0, 3.23, 5.71, 8.20. General increase. corresponds with results found above.
 
-Queries Component          | `y=[0,2,4,6]`
+Recent Queries Component   | `y=[0,2,4,6]`
 :-------------------------:|:-------------------------:
 ![](markov-queries0.png)     | ![](markov-queries2.png)
 ![](markov-queries4.png)     | ![](markov-queries6.png)
