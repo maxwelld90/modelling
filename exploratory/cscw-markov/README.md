@@ -101,6 +101,8 @@ Now, let's break things down a bit more. As the log analysis script parses the l
 
 ![Markov model, over the full dataset.](markov-full.png)
 
+![Markov model, over the full dataset.](markov-first5.png)
+
 ## Thoughts
 - so the saved documents widget is double the height of the recent queries widget.
     - we observed a higher percentage of interactions with the saved documents widget.
