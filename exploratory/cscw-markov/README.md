@@ -167,10 +167,11 @@ Recent Queries Component   | `y=[0,2,4,6]`
 There is evidence to suggest that interactions with the widgets increase as more content appears within them. Over time, there is also evidence to suggest that the components of the interface that participants interact with vary over time.
 
 Regarding the saved documents component:
-    - It is double the heright of the recent queries component.
-    - If we increase the size of the component, does that mean we are priming participants into thinking that "hey, this one is more important"?
-    - Or is this simply due to the fact that in this scenario, it is simply a more useful tool?
-    - We should take a look at the data of a collaborative search session, and consider interactions on the two components there. Is there a difference?
-      - Recent queries are arguably more important for saved documents, perhaps without defined roles?
+
+- It is double the heright of the recent queries component.
+- If we increase the size of the component, does that mean we are priming participants into thinking that "hey, this one is more important"?
+- Or is this simply due to the fact that in this scenario, it is simply a more useful tool?
+- We should take a look at the data of a collaborative search session, and consider interactions on the two components there. Is there a difference?
+  - Recent queries are arguably more important for saved documents, perhaps without defined roles?
 
 With recently saved documents and queries controlled, maybe we can get a better idea of what one is more dominant. We may need to control and draw meaningful conclusions.
