@@ -18,7 +18,7 @@ Questions we want to consider (I think):
 ## Exprimental Interface
 To represent interactions over the *SearchX* interface, we use (in this first pass) Markov models, with each state representing a different interface component (i.e. the searcher is currently interacting with a given component in some way), with transition probabilities the liklihood of transitioning from interface component *x* to interface component *y*. We keep it simple, considering four main areas in which a participant can interact.
 
-![Interface components](images/interface.png)
+![Interface components](images/interface.png) Fig. 1
 
 ### Interface Components (States)
 For the above model, we keep things simple, considering four main components that participants interact with. These are:
@@ -33,7 +33,7 @@ By interact, we mean a hover event. An event where the participant moves their m
 ### Components of Interest
 Note that the *recent queries* component is always placed above the *saved documents* component. Note also of the height of each component; these heights are fixed, and for some reason are different.
 
-Recent Queries             | Saved Documents
+Recent Queries (2)            | Saved Documents (3)
 :-------------------------:|:-------------------------:
 ![](images/interface-queries.png) | ![](images/interface-saved.png)
 
@@ -73,7 +73,7 @@ The final two are interesting -- the values of `X` and `Y` dictate how many item
 
 ### Dataset Distributions
 
-Full Dataset               | First Five Minutes           | 5-10 Minutes
+Full Dataset (4)               | First Five Minutes (5)           | 5-10 Minutes (6)
 :-------------------------:|:----------------------------:|:-----------------------------:
 ![](images/distribution-full.png) | ![](images/distribution-first5.png) | ![](images/distribution-second5.png)
 
@@ -83,19 +83,19 @@ Given the datasets, what were the interaction values recorded? We could consider
 #### Considering Sessions Individually
 Let's consider sessions individually. We have 24 participants, each undertaking 3 search topics, meaning a total of 72 datapoints. While creating a separate Markov model for each would be unnecessary and unweildy, let's instead combine together the complexities of each search session to a single point on a plot. Below is a combined boxplot and swarmplot, with each of the four main interface components represented along the x-axis, with the percentage of time spent interacting within each component shown up the y-axis. As said, each point represents an individual search session, so there will be 72 points per colour.
 
-Full Dataset               | First Five Minutes
+Full Dataset (7)              | First Five Minutes (8)
 :-------------------------:|:-------------------------:
 ![](images/swarmplot.png)         | ![](images/swarmplot-first5.png)
 
 Saved Documents Component  | `x=[0,2,4,6]`
 :-------------------------:|:-------------------------:
-![](images/swarmplot-saved0.png)  | ![](images/swarmplot-saved2.png)
-![](images/swarmplot-saved4.png)  | ![](images/swarmplot-saved6.png)
+![](images/swarmplot-saved0.png) 9  | ![](images/swarmplot-saved2.png) 10
+![](images/swarmplot-saved4.png) 11  | ![](images/swarmplot-saved6.png) 12
 
 Recent Queries Component     | `y=[0,2,4,6]`
 :---------------------------:|:-------------------------:
-![](images/swarmplot-queries0.png)  | ![](images/swarmplot-queries2.png)
-![](images/swarmplot-queries4.png)  | ![](images/swarmplot-queries6.png)
+![](images/swarmplot-queries0.png) 13  | ![](images/swarmplot-queries2.png) 14
+![](images/swarmplot-queries4.png) 15  | ![](images/swarmplot-queries6.png) 16
 
 We can see from the points that generally, a majority of interactions took place within the results, followed by the query components. This is not suprising. The recent queries and saved documents components are the least interacted-with components, with saved documents affording more interactions on average than recent queries.
 
@@ -132,44 +132,45 @@ We can see from the points that generally, a majority of interactions took place
 ### As Content Increases, What Happens?
 Another question posed is: *as the content inside the saved documents and recent queries components increases, what happens to the interactions?* To consider this question, we look at the changes in the total percentage of interactions that take place in the four main components as the number of items in the saved documents and recent queries components increases. Note that this first pass controls only the number of items in the two components in isolation; i.e. if we explicitly look at interactions when 4 items are in the saved documents list (`x=4`), there could be a variable number of queries in the recently issued queries comswponent. **Note that the colours don't match up (sorry), it was a pain to get it to change colour in sns.**
 
-![As the number of saved documents increases (x axis), what happens?](images/saved-documents-increase.png)
+![Fig 17. As the number of saved documents increases (x axis), what happens?](images/saved-documents-increase.png)
 
 So from this plot, we want to look at the orange line first -- which represents the percentage of interactions taking place in the saved documents component, as the number of items in it increases (x axis). This ranges from 0% (at zero documents) to roughly 20% (at seven documents). We generally see an increase as the number of items itself increases. The blue line (recent queries) slowly decreases as the number of saved documents increases. There may be a relationship between the two components -- but I think we need to look at controlling the number of items in both components to draw any meaningful conclusions.
 
-![As the number of recent queries increases (x axis), what happens?](images/recent-queries-increase.png)
+![Fig 18. As the number of recent queries increases (x axis), what happens?](images/recent-queries-increase.png)
 
 When we look at the second plot, we're looking at what happens when the number of queries increases over time (so more items appear in the recent queries component). One thing that looks a bit weird is why the red line (results) starts at 20%. How can you look at results when there are none (at zero queries)? I think this is an artefact of the search interface; perhaps there's a `<div>` that stores results that is still present at the beginning -- see the screenshot below. The logger is tracking hovers into that red box. So there's still events being captured. I will need to update the script to remove these events. However, looking at the blue line (interactions with recent queries), we again see a gradual increase in interactions that take place. Interestingly, we see a lower percentage for the orange line (saved documents), meaning fewer interactions take place within the previously saved documents component than we witnessed above.
 
-![Big bad red box that swallows up hover events.](images/interface-results-container.png)
+![Fig 19. Big bad red box that swallows up hover events.](images/interface-results-container.png)
 
 **tl;dr** We see increases in the interactions within both the saved documents and recent queries components as the number of items within them increases. Both seem to follow a similar trend, although the saved documents component affords a slightly higher rate of increase (at least from a crude visual inspection). We need to do a bit more analysis, controlling what's in BOTH components, to see if one is more *dominant* or *important* than the other, or at least, one that does afford more interactions/attraction.
 
 ### Towards Markov-Style Representations
 Now, let's break things down a bit more. As the log analysis script parses the log events in chronological order, we can work out what the state is at any current point -- and when an event is reached that triggers a state change (see [Log Events](#log-events) above), we can then work out how many occurrences of state changes from one to another happen in a given dataset. We visualise that here with some basic model representations over the four states.
 
-![Markov model, over the full dataset.](images/markov-full.png)
+![Fig 20. Markov model, over the full dataset.](images/markov-full.png)
 
 Similar findings were observed for state transitions over the first x minutes (in terms of transitions between different interface components).
 
 Saved Documents Component  | `x=[0,2,4,6]`
 :-------------------------:|:-------------------------:
-![](images/markov-saved0.png)     | ![](images/markov-saved2.png)
-![](images/markov-saved4.png)     | ![](images/markov-saved6.png)
+![](images/markov-saved0.png) 21    | ![](images/markov-saved2.png) 22
+![](images/markov-saved4.png) 23    | ![](images/markov-saved6.png) 24
 
 - similar levels of transitions from coomponents to saved documents. zero at the start, after that, gradual increases. For example, from Q to Saved, went from 0, 3.23, 5.71, 8.20. General increase. corresponds with results found above.
 
 Recent Queries Component   | `y=[0,2,4,6]`
 :-------------------------:|:-------------------------:
-![](images/markov-queries0.png)     | ![](images/markov-queries2.png)
-![](images/markov-queries4.png)     | ![](images/markov-queries6.png)
+![](images/markov-queries0.png) 25    | ![](images/markov-queries2.png) 26
+![](images/markov-queries4.png) 27    | ![](images/markov-queries6.png) 28
 
 ## Thoughts
-- so the saved documents widget is double the height of the recent queries widget.
-    - we observed a higher percentage of interactions with the saved documents widget.
-    - if we increase the size of a widget, does that mean we are priming participants/users into thinking that "hey, this one is more important"?
-    - or is it simply due to the fact that in the scenario, it is simply more useful?
-    - we should take a look at the data of a collaborative session, and consider interactions on the two widgets there. is there a difference?
-        - because recent queries are arguably more important for saved documents, perhaps without defined roles?
+There is evidence to suggest that interactions with the widgets increase as more content appears within them. Over time, there is also evidence to suggest that the components of the interface that participants interact with vary over time.
 
-- so with recently saved documents and queries controlled, maybe we can get an idea of what one is more dominant.
-    - we need to control both to be able to draw meaningful conclusions!
+Regarding the saved documents component:
+    - It is double the heright of the recent queries component.
+    - If we increase the size of the component, does that mean we are priming participants into thinking that "hey, this one is more important"?
+    - Or is this simply due to the fact that in this scenario, it is simply a more useful tool?
+    - We should take a look at the data of a collaborative search session, and consider interactions on the two components there. Is there a difference?
+      - Recent queries are arguably more important for saved documents, perhaps without defined roles?
+
+With recently saved documents and queries controlled, maybe we can get a better idea of what one is more dominant. We may need to control and draw meaningful conclusions.
