@@ -1,0 +1,12 @@
+[MongoConfig]
+Host = localhost
+Port = 27017
+Database = searchx-cikm
+
+[BasicConfig]
+GroupsPath = data/groups/groups_with_roles.txt
+Topics = 341,367,650
+AggregateGroups = True
+
+[FilterConfig]
+FilterName = SimpleFilter
