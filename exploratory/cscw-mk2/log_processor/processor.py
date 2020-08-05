@@ -48,3 +48,8 @@ class SearchSession(object):
     def process(self):
         for entry in self.log_entries:
             print(entry)
+        
+        # Work on the processing function.
+        # Consider the state, events, etc.
+        # Can we have a model class that we can inject in?
+        # i.e. it keeps track of all the states and transitions.
